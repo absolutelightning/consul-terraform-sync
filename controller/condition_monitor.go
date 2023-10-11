@@ -108,6 +108,7 @@ func (cm *ConditionMonitor) Run(ctx context.Context) error {
 				continue
 			}
 
+			cm.logger.Info("running task", tmplID)
 			go cm.runDynamicTask(ctx, taskName) // errors are logged for now
 
 		case taskName := <-cm.tasksManager.WatchCreatedScheduleTasks():
